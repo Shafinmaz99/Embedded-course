@@ -1,1 +1,38 @@
+from machine import Pin
+from time import sleep
 
+# Pins setup
+red_led = Pin(15, Pin.OUT)
+yellow_led = Pin(16, Pin.OUT)
+green_led = Pin(17, Pin.OUT)
+button = Pin(14, Pin.IN, Pin.PULL_DOWN)
+buzzer = Pin(18, Pin.OUT)
+
+
+# Function to turn off all LEDs
+def all_off():
+    red_led.value(0)
+    yellow_led.value(0)
+    green_led.value(0)
+
+
+# Main loop
+while True:
+    # Check if button is pressed
+    if button.value() == 1:
+        all_off()
+        red_led.value(1)      # Red ON
+        buzzer.value(1)       # Buzzer ON
+        sleep(2)              # Keep buzzer on for 2 seconds
+        buzzer.value(0)       # Buzzer OFF
+    else:
+        # Normal traffic light sequence
+        all_off()
+        red_led.value(1)
+        sleep(2)
+        all_off()
+        yellow_led.value(1)
+        sleep(1)
+        all_off()
+        green_led.value(1)
+        sleep(2)
