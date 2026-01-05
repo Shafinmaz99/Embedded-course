@@ -1,1 +1,15 @@
+from machine import Pin
+from time import sleep
 
+# PIR sensor connected to GP14
+pir = Pin(14, Pin.IN)
+
+print("Burglary alarm system started...")
+
+
+while True:
+    if pir.value() == 1:       # Motion detected
+        print("⚠️ INTRUDER DETECTED!")
+    else:
+        print("No movement")
+    sleep(0.5) 
