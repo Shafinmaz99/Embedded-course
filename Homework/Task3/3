@@ -1,1 +1,15 @@
+from machine import Pin
+from time import sleep
+# Setup LEDs
+led_onboard = Pin(25, Pin.OUT)   # Onboard LED
+led_external = Pin(15, Pin.OUT)  # External LED (with resistor in series)
 
+# Optimized blink function
+def blink(led, delay=0.3):
+    led.toggle()
+    sleep(delay)
+
+# Main loop — continuous blinking
+while True:
+    blink(led_onboard)
+    blink(led_external)
