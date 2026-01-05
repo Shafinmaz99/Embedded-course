@@ -1,1 +1,10 @@
+from time import sleep
 
+print("Ready to go!\n")
+print("Loop starting\n")
+
+for i in range(10):
+    print("Loop number:", i, "\n")
+    sleep(0.3)
+
+print("Loop finished")
