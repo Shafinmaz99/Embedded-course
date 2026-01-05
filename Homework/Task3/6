@@ -1,1 +1,27 @@
+from machine import Pin
+from time import sleep, ticks_ms
+import urandom
 
+
+# Pins setup
+led = Pin(15, Pin.OUT)     # External LED
+button = Pin(14, Pin.IN, Pin.PULL_DOWN)  # Button input
+
+
+while True:
+    print("Get ready...")
+    led.value(1)  # LED ON
+    # Wait random time between 2 and 5 seconds
+    sleep(urandom.uniform(2,5))
+    
+    led.value(0)  # LED OFF
+    start_time = ticks_ms()  # Start timing
+    
+    # Wait for button press
+    while button.value() == 0:
+        pass
+    
+    reaction_time = ticks_ms() - start_time
+    print("Your reaction time:", reaction_time, "ms")
+    
+    sleep(2)  # Small pause before next round
