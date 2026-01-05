@@ -31,4 +31,6 @@ public:
     float* getReadingsPtr() const { return readings; }
 };
 
+
+
 #endif
