@@ -1,1 +1,13 @@
+from machine import Pin
+from time import sleep
+# Pin setup
+button = Pin(14, Pin.IN, Pin.PULL_DOWN)  # Button input with pull-down resistor
+led = Pin(15, Pin.OUT)                   # External LED output
 
+# Main loop
+while True:
+    if button.value() == 1:   # Button pressed
+        led.value(1)          # LED ON
+    else:                     # Button released
+        led.value(0)          # LED OFF
+    sleep(0.05)                # Small delay to avoid bouncing
