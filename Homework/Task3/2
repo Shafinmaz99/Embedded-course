@@ -1,1 +1,23 @@
+from machine import Pin
+from time import sleep
 
+print("Ready to go!\n")
+
+# LEDs
+onboard_led = Pin(25, Pin.OUT)
+external_led = Pin(15, Pin.OUT)
+
+# Ask name
+name = input("What is your name? ")
+
+# Logic
+if name == "Clark Kent":
+    print("\nYou are the Superman!\n")
+else:
+    print("\nYou are an ordinary person.\n")
+
+    # Optimized NON-blocking blinking
+    for i in range(5):
+        onboard_led.toggle()
+        external_led.toggle()
+        sleep(0.3)
